@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="CustomsERP.Core/CustomsERP.Core.csproj" />
+  <Project Path="CustomsERP.Data/CustomsERP.Data.csproj" />
+  <Project Path="CustomsERP.UI/CustomsERP.UI.csproj" />
+</Solution>
