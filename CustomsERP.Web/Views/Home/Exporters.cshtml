@@ -1,0 +1,23 @@
+@model List<CustomsERP.Core.Exporter>
+
+<h1>Exporters</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Eori</th>
+        <th>Name</th>
+        <th>Country</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var exporter in Model)
+    {
+        <tr>
+            <td>@exporter.Eori</td>
+            <td>@exporter.Name</td>
+            <td>@exporter.CountryCode</td>
+        </tr>
+    }
+    </tbody>
+</table>
