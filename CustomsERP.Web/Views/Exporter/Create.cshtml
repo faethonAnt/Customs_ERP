@@ -1,0 +1,31 @@
+@model CustomsERP.Core.Exporter
+
+<h1>New Exporter</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>EORI</label>
+        <input asp-for="Eori" />
+    </div>
+    <div>
+        <label>Name</label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label>Address</label>
+        <input asp-for="Address"/>
+    </div>
+    <div>
+        <label>City</label>
+        <input asp-for="City"/>
+    </div>
+    <div>
+        <label>ZipCode</label>
+        <input asp-for="ZipCode"/>
+    </div>
+    <div>
+        <label>CountryCode</label>
+        <input asp-for="CountryCode"/>
+    </div>
+    <button type="submit">Save</button>
+</form>

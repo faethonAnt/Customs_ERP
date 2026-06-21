@@ -7,7 +7,6 @@ namespace CustomsERP.Web.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly CustomsErpContext _dbContext; // db connection
     
     public IActionResult Index()
     {
@@ -17,19 +16,6 @@ public class HomeController : Controller
     public IActionResult Privacy()
     {
         return View();
-    }
-    
-    //db Connection
-    public HomeController(CustomsErpContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
-
-    //list of EXPORTERS
-    public IActionResult Exporters()
-    {
-        var exporters = _dbContext.Exporters.ToList();
-        return View(exporters);
     }
     
 
