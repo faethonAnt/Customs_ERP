@@ -1,0 +1,30 @@
+@model CustomsERP.Core.Exporter
+
+<h1>Update Exporter</h1>
+
+<form method="post" asp-action="Update" asp-route-id="@Model.Id">
+    <input type="hidden" asp-for="Id"/>
+    <table class="table">
+        <thead>    
+        <tr>
+            <th>Eori</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Zip Code</th>
+            <th>Country</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input asp-for="Eori"/></td>
+            <td><input asp-for="Name"/></td>
+            <td><input asp-for="Address"/></td>
+            <td><input asp-for="City"/></td>
+            <td><input asp-for="ZipCode"/></td>
+            <td><input asp-for="CountryCode"/></td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="submit">Save</button>
+</form>

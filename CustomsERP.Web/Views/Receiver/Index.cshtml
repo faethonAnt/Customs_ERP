@@ -1,0 +1,36 @@
+@model List<CustomsERP.Core.Receiver>
+
+<h1>Receivers</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Eori</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Zip Code</th>
+        <th>Country</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var receiver in Model)
+    {
+        <tr>
+            <td>@receiver.Eori</td>
+            <td>@receiver.Name</td>
+            <td>@receiver.Address</td>
+            <td>@receiver.City</td>
+            <td>@receiver.ZipCode</td>
+            <td>@receiver.CountryCode</td>
+            <td><a asp-controller="Receiver" asp-action="Update" asp-route-id="@receiver.Id">✎</a></td>
+            <td><a asp-controller="Receiver" asp-action="Delete" asp-route-id="@receiver.Id">❌</a></td>
+            
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a asp-controller="Receiver" asp-action="Create">Create New Receiver</a>

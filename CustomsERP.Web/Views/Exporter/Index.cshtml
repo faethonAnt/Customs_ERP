@@ -7,7 +7,12 @@
     <tr>
         <th>Eori</th>
         <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Zip Code</th>
         <th>Country</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -16,8 +21,15 @@
         <tr>
             <td>@exporter.Eori</td>
             <td>@exporter.Name</td>
+            <td>@exporter.Address</td>
+            <td>@exporter.City</td>
+            <td>@exporter.ZipCode</td>
             <td>@exporter.CountryCode</td>
+            <td><a asp-controller="Exporter" asp-action="Update" asp-route-id="@exporter.Id">✎</a></td>
+            <td><a asp-controller="Exporter" asp-action="Delete" asp-route-id="@exporter.Id">❌</a></td>
         </tr>
     }
     </tbody>
 </table>
+
+<a asp-controller="Exporter" asp-action="Create">Create New Exporter</a>

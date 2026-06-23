@@ -1,23 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using CustomsERP.Core;
 using CustomsERP.Data.Context;
-
 namespace CustomsERP.Web.Controllers;
 
-public class ExporterController : Controller
+public class ReceiverController : Controller
 {
     private readonly CustomsErpContext _dbContext;
     
-    //Constructor
-    public ExporterController(CustomsErpContext dbContext)
+    // Constructor
+    public ReceiverController(CustomsErpContext dbContext)
     {
         _dbContext = dbContext;
     }
 
     public IActionResult Index()
     {
-        var exporters = _dbContext.Exporters.ToList();
-        return View(exporters);
+        var receivers = _dbContext.Receivers.ToList();
+        return View(receivers);
     }
 
     [HttpGet]
@@ -25,12 +24,12 @@ public class ExporterController : Controller
     {
         return View();
     }
-
+    
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(Exporter exporter)
+    public async Task<IActionResult> Create(Receiver Receiver)
     {
-        _dbContext.Add(exporter);
+        _dbContext.Add(Receiver);
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
@@ -38,17 +37,17 @@ public class ExporterController : Controller
     [HttpGet]
     public IActionResult Update(int Id)
     {
-        var exporter = _dbContext.Exporters.FirstOrDefault(e => e.Id == Id);
-        if (exporter == null) return NotFound();
-        return View(exporter);
+        var receiver = _dbContext.Receivers.FirstOrDefault(r => r.Id == Id);
+        if (receiver == null) return NotFound();
+        return View(receiver);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Update(int Id, Exporter exporter)
+    public async Task<IActionResult> Update(int Id, Receiver receiver)
     {
-        if (Id != exporter.Id) return BadRequest();
-        _dbContext.Update(exporter);
+        if (Id != receiver.Id) return BadRequest();
+        _dbContext.Update(receiver);
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
@@ -56,19 +55,19 @@ public class ExporterController : Controller
     [HttpGet]
     public IActionResult Delete(int Id)
     {
-        var exporter = _dbContext.Exporters.FirstOrDefault(e => e.Id == Id);
-        if (exporter == null) return NotFound();
-        return View(exporter);
+        var receiver = _dbContext.Receivers.FirstOrDefault(r => r.Id == Id);
+        if (receiver == null) return NotFound();
+        return View(receiver);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Route("DeleteConfirmed")]
+    [ActionName("DeleteConfirmed")]
     public async Task<IActionResult> DeleteConfirmed(int Id)
     {
-        var exporter = _dbContext.Exporters.FirstOrDefault(e => e.Id == Id);
-        if (exporter == null) return NotFound();
-        _dbContext.Remove(exporter);
+        var receiver = _dbContext.Receivers.FirstOrDefault(r => r.Id == Id);
+        if (receiver == null) return NotFound();
+        _dbContext.Remove(receiver);
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
