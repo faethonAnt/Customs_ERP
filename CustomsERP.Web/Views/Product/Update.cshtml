@@ -1,0 +1,22 @@
+@model CustomsERP.Core.Product
+
+<h1>Update Product</h1>
+
+<form method="post" asp-action="Update" asp-route-id="@Model.Id">
+    <input type="hidden" asp-for="Id"/>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Hs Code</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input asp-for="HsCode"/></td>
+            <td><input asp-for="Name"/></td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="submit">Save</button>
+</form>

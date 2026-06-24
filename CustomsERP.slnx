@@ -2,4 +2,5 @@
   <Project Path="CustomsERP.Core/CustomsERP.Core.csproj" />
   <Project Path="CustomsERP.Data/CustomsERP.Data.csproj" />
   <Project Path="CustomsERP.UI/CustomsERP.UI.csproj" />
+  <Project Path="CustomsERP.Web/CustomsERP.Web.csproj" />
 </Solution>

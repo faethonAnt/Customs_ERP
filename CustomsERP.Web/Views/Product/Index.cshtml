@@ -1,0 +1,28 @@
+@model List<CustomsERP.Core.Product>
+
+<h1>Products</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Hs Code</th>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.HsCode</td>
+            <td>@product.Name</td>
+            <td><a asp-controller="Product" asp-action="Update" asp-route-id="@product.Id">✎</a></td>
+            <td><a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id">❌</a></td>
+            
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a asp-controller="Product" asp-action="Create">Create New Product</a>

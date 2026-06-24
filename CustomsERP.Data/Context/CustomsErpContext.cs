@@ -16,9 +16,8 @@ public class CustomsErpContext : DbContext
     public DbSet<Warehouse> Warehouses { get; set; }
     
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public CustomsErpContext(DbContextOptions<CustomsErpContext> options) : base(options)
     {
-        optionsBuilder.UseSqlite("Data Source=CustomERPData.db");
     }
     
     //rules for making things like eori/Wh/port/product etc. codes correct
