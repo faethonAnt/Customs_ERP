@@ -1,0 +1,15 @@
+@model CustomsERP.Core.Warehouse
+
+<h1>New Warehouse</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Warehouse Code</label>
+        <input asp-for="WarehouseCode" />
+    </div>
+    <div>
+        <label>Name</label>
+        <input asp-for="Name" />
+    </div>
+    <button type="submit">Save</button>
+</form>
