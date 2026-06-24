@@ -1,0 +1,22 @@
+@model CustomsERP.Core.Port
+
+<h1>Update Port</h1>
+
+<form method="post" asp-action="Update" asp-route-id="@Model.Id">
+    <input type="hidden" asp-for="Id"/>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Port Code</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input asp-for="PortCode"/></td>
+            <td><input asp-for="Name"/></td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="submit">Save</button>
+</form>

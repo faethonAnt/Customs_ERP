@@ -1,0 +1,28 @@
+@model List<CustomsERP.Core.Port>
+
+<h1>Ports</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Port Code</th>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var port in Model)
+    {
+        <tr>
+            <td>@port.PortCode</td>
+            <td>@port.Name</td>
+            <td><a asp-controller="Port" asp-action="Update" asp-route-id="@port.Id">✎</a></td>
+            <td><a asp-controller="Port" asp-action="Delete" asp-route-id="@port.Id">❌</a></td>
+            
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a asp-controller="Port" asp-action="Create">Create New Port</a>
