@@ -1,0 +1,33 @@
+@model CustomsERP.Core.Shipment
+
+<h1>Update Shipments</h1>
+
+<form method="post" asp-action="Update" asp-route-id="@Model.Id">
+    <input type="hidden" asp-for="Id"/>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Exporter</th>
+            <th>Receiver</th>
+            <th>Shipping Company</th>
+            <th>Port</th>
+            <th>Warehouse</th>
+            <th>DV1</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input asp-for="ExporterId"/></td>
+            <td><input asp-for="ReceiverId"/></td>
+            <td><input asp-for="ShippingCompanyId"/></td>
+            <td><input asp-for="PortId"/></td>
+            <td><input asp-for="WarehouseId"/></td>
+            <td><input asp-for="Dv1Exists"/></td>
+            <td><input asp-for="DateCreated"/></td>
+            
+        </tr>
+        </tbody>
+    </table>
+    <button type="submit">Save</button>
+</form>

@@ -1,0 +1,35 @@
+@model CustomsERP.Core.Shipment
+
+<h1>New Shipments</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Exporter</label>
+        <input asp-for="ExporterId" />
+    </div>
+    <div>
+        <label>Receiver</label>
+        <input asp-for="ReceiverId" />
+    </div>
+    <div>
+        <label>Shipping Company</label>
+        <input asp-for="ShippingCompanyId" />
+    </div>
+    <div>
+        <label>Port</label>
+        <input asp-for="PortId" />
+    </div>
+    <div>
+        <label>Warehouse</label>
+        <input asp-for="WarehouseId" />
+    </div>
+    <div>
+        <label>DV1</label>
+        <input asp-for="Dv1Exists" />
+    </div>
+    <div>
+        <label>Date</label>
+        <input asp-for="DateCreated" />
+    </div>
+    <button type="submit">Save</button>
+</form>
