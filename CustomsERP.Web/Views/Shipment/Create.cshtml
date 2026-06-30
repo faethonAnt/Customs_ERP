@@ -1,35 +1,35 @@
-@model CustomsERP.Core.Shipment
+@model CustomsERP.Web.ViewModels.ShipmentFormViewModel;
 
 <h1>New Shipments</h1>
 
 <form asp-action="Create" method="post">
     <div>
         <label>Exporter</label>
-        <input asp-for="ExporterId" />
+        <select asp-for="Shipment.ExporterId" asp-items="Model.Exporters"></select>
     </div>
     <div>
-        <label>Receiver</label>
-        <input asp-for="ReceiverId" />
+        <label>Receivers</label>
+        <select asp-for="Shipment.ReceiverId" asp-items="Model.Receivers"></select>
     </div>
     <div>
-        <label>Shipping Company</label>
-        <input asp-for="ShippingCompanyId" />
+        <label>Shipping Companies</label>
+        <select asp-for="Shipment.ShippingCompanyId" asp-items="Model.ShippingCompanies"></select>
     </div>
     <div>
-        <label>Port</label>
-        <input asp-for="PortId" />
+        <label>Ports</label>
+        <select asp-for="Shipment.PortId" asp-items="Model.Ports"></select>
     </div>
     <div>
-        <label>Warehouse</label>
-        <input asp-for="WarehouseId" />
+        <label>Warehouses</label>
+        <select asp-for="Shipment.WarehouseId" asp-items="Model.Warehouses"></select>
     </div>
     <div>
         <label>DV1</label>
-        <input asp-for="Dv1Exists" />
+        <input asp-for="Shipment.Dv1Exists">
     </div>
     <div>
         <label>Date</label>
-        <input asp-for="DateCreated" />
+        <input asp-for="Shipment.DateCreated" />
     </div>
     <button type="submit">Save</button>
 </form>

@@ -6,7 +6,6 @@
     <thead>
     <tr>
         <th>Warehouse Code</th>
-        <th>Name</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -16,7 +15,6 @@
     {
         <tr>
             <td>@warehouse.WarehouseCode</td>
-            <td>@warehouse.Name</td>
             <td><a asp-controller="Warehouse" asp-action="Update" asp-route-id="@warehouse.Id">✎</a></td>
             <td><a asp-controller="Warehouse" asp-action="Delete" asp-route-id="@warehouse.Id">❌</a></td>
             
