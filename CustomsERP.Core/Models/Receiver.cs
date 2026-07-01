@@ -9,5 +9,5 @@ public class Receiver
     public string City { get; set; }
     public string ZipCode { get; set; }
     public string CountryCode { get; set; }
-    public DateTime DateCreated { get; set; }
+    public DateTime DateCreated { get; set; } = DateTime.UtcNow;
 }

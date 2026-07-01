@@ -28,5 +28,5 @@ public class Shipment
     public List<ProductVariety> ProductVarieties { get; set; } = new();
     public List<Document> Documents { get; set; }= new();
     public bool Dv1Exists {get; set;}
-    public DateTime DateCreated { get; set; }
+    public DateTime DateCreated { get; set; } = DateTime.UtcNow;
 }

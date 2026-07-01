@@ -3,6 +3,7 @@ using CustomsERP.Core;
 using CustomsERP.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CustomsERP.Web.Controllers;
 
@@ -18,7 +19,14 @@ public class ShipmentController : Controller
 
     public IActionResult Index()
     {
-        var shipments = _dbContext.Shipments.ToList();
+		//this is done so we can view the exporters... by name and not by ids only 
+        var shipments = _dbContext.Shipments
+		.Include(s => s.Exporter)
+		.Include(s => s.Receiver)
+		.Include(s => s.ShippingCompany)
+		.Include(s => s.Port)
+		.Include(s => s.Warehouse)	
+		.ToList();
         return View(shipments);
     }
 

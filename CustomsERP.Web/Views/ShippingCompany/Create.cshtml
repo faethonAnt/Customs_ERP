@@ -1,0 +1,23 @@
+@model CustomsERP.Core.ShippingCompany
+
+<h1>New Shipping Company</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Name</label>
+        <input asp-for="Name"/>
+    </div>
+    <div>
+        <label>Address</label>
+        <input asp-for="Address"/>
+    </div>
+    <div>
+        <label>City</label>
+        <input asp-for="City"/>
+    </div>
+    <div>
+        <label>Bank Details</label>
+        <input asp-for="BankDetails"/>
+    </div>
+    <button type="submit">Save</button>
+</form>

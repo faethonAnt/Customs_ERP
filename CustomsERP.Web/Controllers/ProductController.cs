@@ -57,9 +57,9 @@ public class ProductController : Controller
     [HttpGet]
     public IActionResult Delete(int Id)
     {
-        var products = _dbContext.Products.FirstOrDefault();
-        if (products == null) return NotFound();
-        return View(products);
+        var product = _dbContext.Products.FirstOrDefault(p => p.Id == Id);
+        if (product == null) return NotFound();
+        return View(product);
     }
 
     [HttpPost]
@@ -70,7 +70,7 @@ public class ProductController : Controller
         if (Id != product.Id) return BadRequest();
         _dbContext.Remove(product);
         await _dbContext.SaveChangesAsync();
-        return View(nameof(Index));
+        return RedirectToAction(nameof(Index));
     }
     
 }

@@ -20,12 +20,12 @@
     @foreach (var shipment in Model)
     {
         <tr>
-            <td>@shipment.ExporterId</td>
-            <td>@shipment.ReceiverId</td>
-            <td>@shipment.ShippingCompanyId</td>
-            <td>@shipment.PortId</td>
-            <td>@shipment.WarehouseId</td>
-            <td>@shipment.Dv1Exists</td>
+            <td>@shipment.Exporter.Name</td>
+            <td>@shipment.Receiver.Name</td>
+            <td>@shipment.ShippingCompany.Name</td>
+            <td>@shipment.Port.PortCode</td>
+            <td>@shipment.Warehouse.WarehouseCode</td>
+            <td>@(shipment.Dv1Exists ? "Yes" : "No")</td>
             <td>@shipment.DateCreated</td>
             <td><a asp-controller="Shipment" asp-action="Update" asp-route-id="@shipment.Id">✎</a></td>
             <td><a asp-controller="Shipment" asp-action="Delete" asp-route-id="@shipment.Id">❌</a></td>

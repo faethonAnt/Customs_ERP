@@ -1,0 +1,32 @@
+@model List<CustomsERP.Core.ShippingCompany>
+
+<h1>Shipping Companies</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Bank Details</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var shippingCompany in Model)
+    {
+        <tr>
+            <td>@shippingCompany.Name</td>
+            <td>@shippingCompany.Address</td>
+            <td>@shippingCompany.City</td>
+            <td>@shippingCompany.BankDetails</td>
+            <td><a asp-controller="ShippingCompany" asp-action="Update" asp-route-id="@shippingCompany.Id">✎</a></td>
+            <td><a asp-controller="ShippingCompany" asp-action="Delete" asp-route-id="@shippingCompany.Id">❌</a></td>
+            
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a asp-controller="ShippingCompany" asp-action="Create">Create New Shipping Company</a>
