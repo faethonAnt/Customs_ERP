@@ -131,4 +131,20 @@ public class ShipmentController : Controller
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
-}
+	
+	[HttpGet]
+	public IActionResult FullDetails(int id)
+    {
+        var shipment = _dbContext.Shipments
+            .Include(s => s.Id == id)
+            .Include(s => s.Receiver)
+            .Include(s => s.ShippingCompany)
+            .Include(s => s.Port)
+            .Include(s => s.Warehouse);
+        return View(shipment);
+    }
+
+}	
+
+
+

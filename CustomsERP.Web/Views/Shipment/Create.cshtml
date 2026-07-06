@@ -3,6 +3,7 @@
 <h1>New Shipments</h1>
 
 <form asp-action="Create" method="post">
+git
     <div>
         <label>Exporter</label>
         <select asp-for="Shipment.ExporterId" asp-items="Model.Exporters"></select>
@@ -29,7 +30,7 @@
     </div>
     <div>
         <label>Date</label>
-        <input asp-for="Shipment.DateCreated" />
+        <input asp-for="Shipment.DateCreated"/>
     </div>
     <button type="submit">Save</button>
 </form>
