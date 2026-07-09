@@ -1,4 +1,4 @@
-@model CustomsERP.Core.Shipment
+@model List<CustomsERP.Core.Shipment>
 
 <h1>Shipment</h1>
 
@@ -13,7 +13,8 @@
     </tr>
     </thead>
     <tbody>
-   
+   	@foreach(var shipment in Model)
+	{
         <tr>
             <td>@shipment.MRN</td>
             <td>@shipment.Exporter.Name</td>

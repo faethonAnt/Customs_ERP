@@ -63,7 +63,7 @@ public class ExporterController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Route("DeleteConfirmed")]
+    [ActionName("DeleteConfirmed")]
     public async Task<IActionResult> DeleteConfirmed(int Id)
     {
         var exporter = _dbContext.Exporters.FirstOrDefault(e => e.Id == Id);

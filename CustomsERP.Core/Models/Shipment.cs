@@ -5,6 +5,7 @@ namespace CustomsERP.Core;
 public class Shipment
 {
     public int Id { get; set; }
+	public string MRN { get; set; }
     
     //Exporter reference
     public int ExporterId { get; set; }

@@ -74,7 +74,7 @@ public class DocumentController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Route("DeleteConfirmed")]
+    [ActionName("DeleteConfirmed")]
     public async Task<IActionResult> DeleteConfirmed(int Id)
     {
         var document = _dbContext.Documents.FirstOrDefault(d => d.Id == Id);

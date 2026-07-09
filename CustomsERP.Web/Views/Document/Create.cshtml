@@ -1,0 +1,22 @@
+@model CustomsERP.Core.Document;
+
+<h1>Create New Document</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <input type="hidden" asp-for="ShipmentId"/>
+    </div>
+    <div>
+        <label>Name</label>
+        <input asp-for="Name"/>
+    </div>
+    <div>
+        <label>Code</label>
+        <input asp-for="Code"/>
+    </div>
+    <div>
+        <label>File Path</label>
+        <input asp-for="FilePath"/>
+    </div>
+    <button type="submit">Save</button>
+</form>

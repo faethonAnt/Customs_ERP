@@ -1,0 +1,31 @@
+@model CustomsERP.Web.ViewModels.DocumentIndexViewModel
+
+<h1>Documents</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Date</th>
+        <th>File Path</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var doc in Model.Documents)
+    {
+        <tr>
+            <td>@doc.Name</td>
+            <td>@doc.Code</td>
+            <td>@doc.CreatedOn</td>
+            <td>@doc.FilePath</td>
+            <td><a asp-controller="Document" asp-action="Update" asp-route-id="@doc.Id">✎</a></td>
+            <td><a asp-controller="Document" asp-action="Delete" asp-route-id="@doc.Id">❌</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a asp-controller="Document" asp-action="Create" asp-route-shipmentId="@Model.Shipment.Id">Add New Document</a>

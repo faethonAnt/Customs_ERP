@@ -8,6 +8,7 @@
         <th>MRN</th>
         <th>Exporter</th>
         <th>Date</th>
+		<th>Files</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -19,6 +20,8 @@
             <td>@shipment.MRN</td>
             <td>@shipment.Exporter.Name</td>
             <td>@shipment.DateCreated</td>
+														<!-- ShipmentId is used because the route is  -->
+			<td><a asp-controller="Document" asp-action="Index" asp-route-ShipmentId="@shipment.Id">📂</a></td>
             <td><a asp-controller="Shipment" asp-action="Update" asp-route-id="@shipment.Id">✎</a></td>
             <td><a asp-controller="Shipment" asp-action="Delete" asp-route-id="@shipment.Id">❌</a></td>
         </tr>

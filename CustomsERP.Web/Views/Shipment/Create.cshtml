@@ -3,34 +3,32 @@
 <h1>New Shipments</h1>
 
 <form asp-action="Create" method="post">
-git
-    <div>
-        <label>Exporter</label>
-        <select asp-for="Shipment.ExporterId" asp-items="Model.Exporters"></select>
-    </div>
-    <div>
-        <label>Receivers</label>
-        <select asp-for="Shipment.ReceiverId" asp-items="Model.Receivers"></select>
-    </div>
-    <div>
-        <label>Shipping Companies</label>
-        <select asp-for="Shipment.ShippingCompanyId" asp-items="Model.ShippingCompanies"></select>
-    </div>
-    <div>
-        <label>Ports</label>
-        <select asp-for="Shipment.PortId" asp-items="Model.Ports"></select>
-    </div>
-    <div>
-        <label>Warehouses</label>
-        <select asp-for="Shipment.WarehouseId" asp-items="Model.Warehouses"></select>
-    </div>
-    <div>
-        <label>DV1</label>
-        <input asp-for="Shipment.Dv1Exists">
-    </div>
-    <div>
-        <label>Date</label>
-        <input asp-for="Shipment.DateCreated"/>
-    </div>
+	<table class="table">
+		<thead>
+		<tr>
+			<th>MRN</th>
+			<th>Exporter</th>
+            <th>Receiver</th>
+            <th>Shipping Company</th>
+            <th>Port</th>
+            <th>Warehouse</th>
+            <th>DV1</th>
+            <th>Date</th>
+		</tr>
+		</thead>
+        <tbody>
+		<tr>
+			<td><input asp-for="Shipment.MRN"/></td>
+            <td><select asp-for="Shipment.ExporterId" asp-items="Model.Exporters"></select></td>
+            <td><select asp-for="Shipment.ReceiverId" asp-items="Model.Receivers"></select></td>
+            <td><select asp-for="Shipment.ShippingCompanyId" asp-items="Model.ShippingCompanies"></select></td>
+            <td><select asp-for="Shipment.PortId" asp-items="Model.Ports"></select></td>
+            <td><select asp-for="Shipment.WarehouseId" asp-items="Model.Warehouses"></select></td>
+            <td><input asp-for="Shipment.Dv1Exists"></td>
+            <td><input asp-for="Shipment.DateCreated"/></td>
+		</tr>
+        </tbody>
+	</table>
+
     <button type="submit">Save</button>
 </form>
