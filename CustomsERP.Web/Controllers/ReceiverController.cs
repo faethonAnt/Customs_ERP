@@ -30,6 +30,10 @@ public class ReceiverController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Receiver Receiver)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(Receiver);
+        }
         _dbContext.Add(Receiver);
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
@@ -47,6 +51,10 @@ public class ReceiverController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Update(int Id, Receiver receiver)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(receiver);
+        }
         if (Id != receiver.Id) return BadRequest();
         _dbContext.Update(receiver);
         await _dbContext.SaveChangesAsync();

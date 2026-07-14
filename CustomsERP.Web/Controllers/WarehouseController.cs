@@ -29,6 +29,10 @@ public class WarehouseController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Warehouse warehouse)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(warehouse);
+        }
         _dbContext.Add(warehouse);
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
@@ -46,6 +50,10 @@ public class WarehouseController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Update(int Id, Warehouse warehouse)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(warehouse);
+        }
         if (Id != warehouse.Id) return BadRequest();
         _dbContext.Update(warehouse);
         await _dbContext.SaveChangesAsync();

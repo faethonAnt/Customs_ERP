@@ -30,6 +30,10 @@ public class ProductController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Product product)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(product);
+        }
         _dbContext.Add(product);
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
@@ -47,6 +51,10 @@ public class ProductController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Update(int Id, Product product)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(product);
+        }
         if (Id != product.Id) return BadRequest();
         _dbContext.Update(product);
         await _dbContext.SaveChangesAsync();
@@ -65,9 +73,10 @@ public class ProductController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     [ActionName("DeleteConfirmed")]
-    public async Task<IActionResult> DeleteConfirmed(int Id, Product product)
+    public async Task<IActionResult> DeleteConfirmed(int Id)
     {
-        if (Id != product.Id) return BadRequest();
+        var product = _dbContext.Products.FirstOrDefault(p => p.Id == Id);
+        if (product == null) return NotFound();
         _dbContext.Remove(product);
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));

@@ -64,6 +64,10 @@ public class ShipmentController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Shipment shipment)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(shipment);
+        }
         _dbContext.Add(shipment);
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
@@ -106,6 +110,10 @@ public class ShipmentController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Update(int id, ShipmentFormViewModel shipmentForm)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(shipmentForm);
+        }
         if (shipmentForm.Shipment.Id != id) return BadRequest();
         _dbContext.Update(shipmentForm.Shipment);
         await _dbContext.SaveChangesAsync();

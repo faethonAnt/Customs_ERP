@@ -30,6 +30,10 @@ public class ShippingCompanyController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(ShippingCompany shippingCompany)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(shippingCompany);
+        }
         _dbContext.Add(shippingCompany);
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
@@ -47,6 +51,10 @@ public class ShippingCompanyController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Update(int Id, ShippingCompany shippingCompany)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(shippingCompany);
+        }
         if (shippingCompany.Id != Id) return BadRequest();
         _dbContext.Update(shippingCompany);
         await _dbContext.SaveChangesAsync();
@@ -64,9 +72,10 @@ public class ShippingCompanyController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     [ActionName("DeleteConfirmed")]
-    public async Task<IActionResult> DeleteConfirmed(int Id, ShippingCompany shippingCompany)
+    public async Task<IActionResult> DeleteConfirmed(int Id)
     {
-        if (shippingCompany.Id != Id) return BadRequest();
+        var shippingCompany = _dbContext.ShippingCompanies.FirstOrDefault(sc => sc.Id == Id);
+        if (shippingCompany == null) return NotFound();
         _dbContext.Remove(shippingCompany);
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));

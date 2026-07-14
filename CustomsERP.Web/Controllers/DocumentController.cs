@@ -40,6 +40,10 @@ public class DocumentController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Document document)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(document);
+        }
         document.CreatedOn = DateTime.UtcNow;
         _dbContext.Add(document);
         await _dbContext.SaveChangesAsync();
@@ -58,6 +62,10 @@ public class DocumentController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Update(int Id, Document document)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(document);
+        }
         if (Id != document.Id) return BadRequest();
         _dbContext.Update(document);
         await _dbContext.SaveChangesAsync();

@@ -29,6 +29,10 @@ public class PortController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Port Port)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(Port);
+        }
         _dbContext.Add(Port);
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
@@ -46,6 +50,10 @@ public class PortController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Update(int Id, Port port)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(port);
+        }
         if (Id != port.Id) return BadRequest();
         _dbContext.Update(port);
         await _dbContext.SaveChangesAsync();

@@ -31,6 +31,10 @@ public class ExporterController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Exporter exporter)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(exporter);
+        }
         _dbContext.Add(exporter);
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
@@ -48,6 +52,10 @@ public class ExporterController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Update(int Id, Exporter exporter)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(exporter);
+        }
         if (Id != exporter.Id) return BadRequest();
         _dbContext.Update(exporter);
         await _dbContext.SaveChangesAsync();
