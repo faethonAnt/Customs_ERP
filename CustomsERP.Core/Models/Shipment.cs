@@ -1,10 +1,13 @@
-
+using System.ComponentModel.DataAnnotations;
 
 namespace CustomsERP.Core;
 
 public class Shipment
 {
     public int Id { get; set; }
+
+	[Required]
+    [RegularExpression(@"^\d{2}[A-Z]{4}\d{12}$")]
 	public string MRN { get; set; }
     
     //Exporter reference

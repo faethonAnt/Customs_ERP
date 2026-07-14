@@ -1,8 +1,15 @@
-﻿namespace CustomsERP.Core;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CustomsERP.Core;
 
 public class Product
 {
     public int Id { get; set; }
-    public required int HsCode { get; set; }
+    
+    [Required]
+    [RegularExpression(@"\d{10}$")]
+    public required string HsCode { get; set; }
+    
+    [Required]
     public required string Name { get; set; }
 }

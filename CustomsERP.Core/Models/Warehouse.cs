@@ -8,6 +8,6 @@ public class Warehouse
     
     [Required]
     [StringLength(16)]
-    [RegularExpression(@"^GR\d{14}$")]
+    [RegularExpression(@"^GR\d{12}$")]
     public string WarehouseCode { get; set; }
 }
