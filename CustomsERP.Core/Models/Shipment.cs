@@ -7,7 +7,7 @@ public class Shipment
     public int Id { get; set; }
 
 	[Required]
-    [RegularExpression(@"^\d{2}[A-Z]{4}\d{12}$")]
+    [RegularExpression(@"^\d{2}[A-Z]{4}\d{12}$", ErrorMessage = "MRN must be 18 characters: 2 digits, then 4 uppercase letters, then 12 digits.")]
 	public string MRN { get; set; }
     
     //Exporter reference

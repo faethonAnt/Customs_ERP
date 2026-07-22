@@ -3,29 +3,35 @@
 <h1>New Receiver</h1>
 
 <form asp-action="Create" method="post">
-    <div>
-        <label>EORI</label>
-        <input asp-for="Eori" />
+    <div asp-validation-summary="All" class="text-danger">
+        <div>
+            <label>EORI</label>
+            <input asp-for="Eori"/>
+        </div>
+        <div>
+            <label>Name</label>
+            <input asp-for="Name"/>
+        </div>
+        <div>
+            <label>Address</label>
+            <input asp-for="Address"/>
+        </div>
+        <div>
+            <label>City</label>
+            <input asp-for="City"/>
+        </div>
+        <div>
+            <label>ZipCode</label>
+            <input asp-for="ZipCode"/>
+        </div>
+        <div>
+            <label>CountryCode</label>
+            <input asp-for="CountryCode"/>
+        </div>
+        <button type="submit">Save</button>
     </div>
-    <div>
-        <label>Name</label>
-        <input asp-for="Name" />
-    </div>
-    <div>
-        <label>Address</label>
-        <input asp-for="Address"/>
-    </div>
-    <div>
-        <label>City</label>
-        <input asp-for="City"/>
-    </div>
-    <div>
-        <label>ZipCode</label>
-        <input asp-for="ZipCode"/>
-    </div>
-    <div>
-        <label>CountryCode</label>
-        <input asp-for="CountryCode"/>
-    </div>
-    <button type="submit">Save</button>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

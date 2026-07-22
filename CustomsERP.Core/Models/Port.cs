@@ -8,7 +8,7 @@ public class Port
 	
 	[Required]
 	[StringLength(50)]
-	[RegularExpression(@"^GR\d{6}.*$")]
+	[RegularExpression(@"^GR\d{6}.*$", ErrorMessage = "Port Code should start with GR followed by 6 digits")]
     public string PortCode { get; set; }
     
 }

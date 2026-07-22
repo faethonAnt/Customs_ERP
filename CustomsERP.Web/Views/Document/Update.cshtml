@@ -3,24 +3,30 @@
 <h1>Update Document</h1>
 
 <form method="post" asp-action="Update" asp-route-id="@Model.Id">
-    <input type="hidden" asp-for="Id"/>
-    <input type="hidden" asp-for="ShipmentId"/>
-    <input type="hidden" asp-for="CreatedOn"/>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Code</th>
-            <th>File Path</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><input asp-for="Name"/></td>
-            <td><input asp-for="Code"/></td>
-            <td><input asp-for="FilePath"/></td>
-        </tr>
-        </tbody>
-    </table>
-    <button type="submit">Save</button>
+    <div asp-validation-summary="All" class="text-danger">
+        <input type="hidden" asp-for="Id"/>
+        <input type="hidden" asp-for="ShipmentId"/>
+        <input type="hidden" asp-for="CreatedOn"/>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>File Path</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input asp-for="Name"/></td>
+                <td><input asp-for="Code"/></td>
+                <td><input asp-for="FilePath"/></td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit">Save</button>
+    </div>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

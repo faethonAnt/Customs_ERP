@@ -8,7 +8,7 @@ public class Document
     public int ShipmentId { get; set; }
 
 	[Required]
-	[RegularExpression(@"^[A-Z0-9]{4}.*$")]
+	[RegularExpression(@"^[A-Z0-9]{4}.*$", ErrorMessage = "Code must start with 4 Uppercase letters or digits")]
     public string Code { get; set; }
 
 	[Required]

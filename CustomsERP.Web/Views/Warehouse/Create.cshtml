@@ -3,9 +3,16 @@
 <h1>New Warehouse</h1>
 
 <form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger">
+    
     <div>
         <label>Warehouse Code</label>
-        <input asp-for="WarehouseCode" />
+        <input asp-for="WarehouseCode"/>
     </div>
     <button type="submit">Save</button>
+    </div>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -3,18 +3,24 @@
 <h1>Update Port</h1>
 
 <form method="post" asp-action="Update" asp-route-id="@Model.Id">
-    <input type="hidden" asp-for="Id"/>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Port Code</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><input asp-for="PortCode"/></td>
-        </tr>
-        </tbody>
-    </table>
-    <button type="submit">Save</button>
+    <div asp-validation-summary="All" class="text-danger">
+        <input type="hidden" asp-for="Id"/>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Port Code</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input asp-for="PortCode"/></td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit">Save</button>
+    </div>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

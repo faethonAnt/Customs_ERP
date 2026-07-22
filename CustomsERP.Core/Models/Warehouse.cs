@@ -8,6 +8,6 @@ public class Warehouse
     
     [Required]
     [StringLength(16)]
-    [RegularExpression(@"^GR\d{12}$")]
+    [RegularExpression(@"^GR\d{12}$", ErrorMessage = "Code should be GR followed by 12 digits max")]
     public string WarehouseCode { get; set; }
 }

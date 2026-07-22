@@ -20,7 +20,7 @@ public class Exporter
     public string ZipCode { get; set; }
     
     [Required]
-	[RegularExpression(@"^[A-Z]{2}$")]
+	[RegularExpression(@"^[A-Z]{2}$", ErrorMessage = "Country code must be only two capital letters")]
     public string CountryCode { get; set; }
 
     public DateTime DateCreated { get; set; } = DateTime.UtcNow;

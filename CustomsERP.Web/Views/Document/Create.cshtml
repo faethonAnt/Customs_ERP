@@ -2,7 +2,9 @@
 
 <h1>Create New Document</h1>
 
+
 <form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger">
     <div>
         <input type="hidden" asp-for="ShipmentId"/>
     </div>
@@ -19,4 +21,9 @@
         <input asp-for="FilePath"/>
     </div>
     <button type="submit">Save</button>
+    </div>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

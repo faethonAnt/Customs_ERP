@@ -3,11 +3,12 @@
 <h1>Update Shipments</h1>
 
 <form method="post" asp-action="Update" asp-route-id="@Model.Shipment.Id">
+    <div asp-validation-summary="All" class="text-danger">
     <input type="hidden" asp-for="Shipment.Id"/>
     <table class="table">
         <thead>
         <tr>
-			<th>MRN</th>
+            <th>MRN</th>
             <th>Exporter</th>
             <th>Receiver</th>
             <th>Shipping Company</th>
@@ -29,4 +30,9 @@
         </tbody>
     </table>
     <button type="submit">Save</button>
+    </div>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

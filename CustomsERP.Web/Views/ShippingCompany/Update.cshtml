@@ -1,29 +1,26 @@
-@model CustomsERP.Core.Receiver
+@model CustomsERP.Core.ShippingCompany
 
-<h1>Update Receiver</h1>
+<h1>Update Shipping Company</h1>
 
 <form method="post" asp-action="Update" asp-route-id="@Model.Id">
     <div asp-validation-summary="All" class="text-danger">
+    
         <input type="hidden" asp-for="Id"/>
         <table class="table">
             <thead>
             <tr>
-                <th>Eori</th>
                 <th>Name</th>
                 <th>Address</th>
                 <th>City</th>
-                <th>Zip Code</th>
-                <th>Country</th>
+                <th>Bank Details</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td><input asp-for="Eori"/></td>
                 <td><input asp-for="Name"/></td>
                 <td><input asp-for="Address"/></td>
                 <td><input asp-for="City"/></td>
-                <td><input asp-for="ZipCode"/></td>
-                <td><input asp-for="CountryCode"/></td>
+                <td><input asp-for="BankDetails"/></td>
             </tr>
             </tbody>
         </table>
