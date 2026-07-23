@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using CustomsERP.Core;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace CustomsERP.Data.Context;
 
-public class CustomsErpContext : DbContext
+public class CustomsErpContext : IdentityDbContext<IdentityUser>
 {
     public DbSet<Shipment> Shipments { get; set; }
     public DbSet<Document> Documents { get; set; }
@@ -23,6 +25,8 @@ public class CustomsErpContext : DbContext
     //rules for making things like eori/Wh/port/product etc. codes correct
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+        
         modelBuilder.Entity<Exporter>().HasIndex(e => e.Eori).IsUnique();
         modelBuilder.Entity<Port>().HasIndex(p => p.PortCode).IsUnique();
         modelBuilder.Entity<Product>().HasIndex(p => p.HsCode).IsUnique();
