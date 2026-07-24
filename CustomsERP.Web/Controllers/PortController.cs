@@ -1,9 +1,11 @@
 using CustomsERP.Core;
 using CustomsERP.Data.Context;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CustomsERP.Web.Controllers;
 
+[Authorize]
 public class PortController : Controller
 {
     private readonly CustomsErpContext _dbContext;
@@ -12,19 +14,21 @@ public class PortController : Controller
     {
         _dbContext = dbContext;
     }
-
+    
     public IActionResult Index()
     {
         var ports = _dbContext.Ports.ToList();
         return View(ports);
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult Create()
     {
         return View();
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Port Port)
@@ -38,6 +42,7 @@ public class PortController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult Update(int id)
     {
@@ -46,6 +51,7 @@ public class PortController : Controller
         return View(port);
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Update(int Id, Port port)
@@ -60,6 +66,7 @@ public class PortController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult Delete(int id)
     {
@@ -68,6 +75,7 @@ public class PortController : Controller
         return View(port);
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     [ActionName("DeleteConfirmed")]

@@ -1,9 +1,12 @@
 using CustomsERP.Core;
 using CustomsERP.Data.Context;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace CustomsERP.Web.Controllers;
 
+[Authorize]
 public class ShippingCompanyController : Controller
 {
     private readonly CustomsErpContext _dbContext;

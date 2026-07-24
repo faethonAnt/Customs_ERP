@@ -4,10 +4,12 @@ using CustomsERP.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace CustomsERP.Web.Controllers;
 
-
+[Authorize]
 public class ShipmentController : Controller
 {
     private readonly CustomsErpContext _dbContext;

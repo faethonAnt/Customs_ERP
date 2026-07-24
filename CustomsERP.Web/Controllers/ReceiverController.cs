@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using CustomsERP.Core;
 using CustomsERP.Data.Context;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace CustomsERP.Web.Controllers;
 
+[Authorize]
 public class ReceiverController : Controller
 {
     private readonly CustomsErpContext _dbContext;

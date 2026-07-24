@@ -1,12 +1,14 @@
-
 using CustomsERP.Data.Context;
 using CustomsERP.Web.ViewModels;
 using CustomsERP.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace CustomsERP.Web.Controllers;
 
+[Authorize]
 public class DocumentController : Controller
 {
     private readonly CustomsErpContext _dbContext;

@@ -1,9 +1,11 @@
 using CustomsERP.Core;
 using CustomsERP.Data.Context;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CustomsERP.Web.Controllers;
 
+[Authorize]
 public class WarehouseController : Controller
 {
      private readonly CustomsErpContext _dbContext;
@@ -18,13 +20,15 @@ public class WarehouseController : Controller
         var warehouse = _dbContext.Warehouses.ToList();
         return View(warehouse);
     }
-
+    
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult Create()
     {
         return View();
     }
-
+    
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Warehouse warehouse)
@@ -38,6 +42,7 @@ public class WarehouseController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult Update(int id)
     {
@@ -46,6 +51,7 @@ public class WarehouseController : Controller
         return View(warehouse);
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Update(int Id, Warehouse warehouse)
@@ -60,6 +66,7 @@ public class WarehouseController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult Delete(int id)
     {
@@ -68,6 +75,7 @@ public class WarehouseController : Controller
         return View(warehouse);
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     [ActionName("DeleteConfirmed")]
