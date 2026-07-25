@@ -3,7 +3,7 @@
 <h1>New Shipping Company</h1>
 
 <form asp-action="Create" method="post">
-    <div asp-validation-summary="All" class="text-danger">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div>
         <label>Name</label>
         <input asp-for="Name"/>
@@ -21,7 +21,6 @@
         <input asp-for="BankDetails"/>
     </div>
     <button type="submit">Save</button>
-    </div>
 </form>
 
 @section Scripts {

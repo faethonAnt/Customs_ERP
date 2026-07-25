@@ -3,7 +3,7 @@
 <h1>New Exporter</h1>
 
 <form asp-action="Create" method="post">
-    <div asp-validation-summary="All" class="text-danger">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div>
         <label>EORI</label>
         <input asp-for="Eori"/>
@@ -29,7 +29,6 @@
         <input asp-for="CountryCode"/>
     </div>
     <button type="submit">Save</button>
-    </div>
 </form>
 
 @section Scripts {

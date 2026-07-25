@@ -3,7 +3,7 @@
 <h1>Update Shipments</h1>
 
 <form method="post" asp-action="Update" asp-route-id="@Model.Shipment.Id">
-    <div asp-validation-summary="All" class="text-danger">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <input type="hidden" asp-for="Shipment.Id"/>
     <table class="table">
         <thead>
@@ -30,7 +30,6 @@
         </tbody>
     </table>
     <button type="submit">Save</button>
-    </div>
 </form>
 
 @section Scripts {

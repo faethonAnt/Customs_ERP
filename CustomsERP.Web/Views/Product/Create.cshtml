@@ -3,7 +3,7 @@
 <h1>New Product</h1>
 
 <form asp-action="Create" method="post">
-    <div asp-validation-summary="All" class="text-danger">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div>
         <label>Hs Code</label>
         <input asp-for="HsCode"/>
@@ -13,7 +13,6 @@
         <input asp-for="Name"/>
     </div>
     <button type="submit">Save</button>
-    </div>
 </form>
 
 @section Scripts {

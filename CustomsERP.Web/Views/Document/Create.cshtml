@@ -4,7 +4,7 @@
 
 
 <form asp-action="Create" method="post">
-    <div asp-validation-summary="All" class="text-danger">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div>
         <input type="hidden" asp-for="ShipmentId"/>
     </div>
@@ -21,7 +21,6 @@
         <input asp-for="FilePath"/>
     </div>
     <button type="submit">Save</button>
-    </div>
 </form>
 
 @section Scripts {
