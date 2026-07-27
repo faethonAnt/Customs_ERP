@@ -30,6 +30,7 @@ public class CustomsErpContext : IdentityDbContext<IdentityUser>
         modelBuilder.Entity<Exporter>().HasIndex(e => e.Eori).IsUnique();
         modelBuilder.Entity<Port>().HasIndex(p => p.PortCode).IsUnique();
         modelBuilder.Entity<Product>().HasIndex(p => p.HsCode).IsUnique();
+        modelBuilder.Entity<Product>().HasOne<IdentityUser>().WithMany().HasForeignKey(p => p.UserId);
         modelBuilder.Entity<Receiver>().HasIndex(r => r.Eori).IsUnique();
         modelBuilder.Entity<Warehouse>().HasIndex(w => w.WarehouseCode).IsUnique();
     }
