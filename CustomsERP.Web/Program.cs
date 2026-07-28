@@ -11,7 +11,7 @@ builder.Services.AddRazorPages();
 
 // Register Db context so controllers can ask for it DEPENDENCY INJECTION
 builder.Services.AddDbContext<CustomsErpContext>(options => 
-    options.UseSqlite("Data Source=../CustomsERP.Data/CustomERPData.db"));
+    options.UseNpgsql("Host=db;Database=customserp;Username=postgres;Password=postgres"));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
