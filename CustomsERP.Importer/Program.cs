@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 
 var optionsBuilder = new DbContextOptionsBuilder<CustomsErpContext>();
-optionsBuilder.UseSqlite("Data Source=../CustomsERP.Data/CustomERPData.db");
+optionsBuilder.UseNpgsql("Host=localhost;Database=customserp;Username=postgres;Password=postgres");
 
 using var context = new CustomsErpContext(optionsBuilder.Options);
 
@@ -21,6 +21,12 @@ using var csv = new CsvReader(reader, config);
 var seenCodes = new HashSet<string>();
 var productsToAdd = new List<Product>();
 
+var adminUser = context.Users.FirstOrDefault(u => u.Email == "faethon21@gmail.com");
+if (adminUser == null)
+{
+    throw new InvalidOperationException("Admin user not found — log into the web app at least once first so the account exists.");
+}
+
 while (csv.Read())
 {
     var rawCode = csv.GetField(0);
@@ -29,7 +35,7 @@ while (csv.Read())
     var code = rawCode.Split(' ')[0];
     if (!seenCodes.Add(code)) continue;
     
-    productsToAdd.Add(new Product{HsCode = code, Name = description});
+    productsToAdd.Add(new Product{HsCode = code, Name = description, UserId = adminUser.Id});
 }
 
 context.Products.AddRange(productsToAdd);

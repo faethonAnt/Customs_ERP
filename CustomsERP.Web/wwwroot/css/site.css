@@ -29,3 +29,26 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.hero{
+  text-align: center;
+}
+
+.module-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.module-card{
+  padding: 2rem;
+  text-align: center;
+  background-color: #98a1a1;
+  text-decoration: none;
+  border-radius: 0.8rem;
+  color: var(--bs-primary);
+}
+
+.module-card:hover{
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.3);
+}
