@@ -19,17 +19,46 @@ public class ShipmentController : Controller
         _dbContext = dbContext;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(ShipmentFilterViewModel filter)
     {
 		//this is done so we can view the exporters... by name and not by ids only 
-        var shipments = _dbContext.Shipments
-		.Include(s => s.Exporter)
-		.Include(s => s.Receiver)
-		.Include(s => s.ShippingCompany)
-		.Include(s => s.Port)
-		.Include(s => s.Warehouse)	
-		.ToList();
-        return View(shipments);
+        IQueryable<Shipment> shipments = _dbContext.Shipments
+            .Include(s => s.Exporter)
+            .Include(s => s.Receiver)
+            .Include(s => s.ShippingCompany)
+            .Include(s => s.Port)
+            .Include(s => s.Warehouse);
+
+        if (filter.ExporterId.HasValue)
+        {
+            shipments = shipments.Where(s => s.ExporterId == filter.ExporterId.Value);
+        }
+
+        if (filter.DateFrom.HasValue)
+        {
+            shipments = shipments.Where(s => s.DateCreated >= filter.DateFrom.Value);
+        }
+
+        if (filter.DateTo.HasValue)
+        {
+            shipments = shipments.Where(s => s.DateCreated <= filter.DateTo.Value);
+        }
+
+        if (filter.ProductId.HasValue)
+        {
+            shipments = shipments.Where(s => s.ProductVarieties.Any(pv => pv.ProductId == filter.ProductId));
+        }
+        
+        filter.Exporters = _dbContext.Exporters
+            .Select(e => new SelectListItem { Value = e.Id.ToString(), Text = e.Name })
+            .ToList();
+
+        filter.Products = _dbContext.Products
+            .Select(p => new SelectListItem { Value = p.Id.ToString(), Text = p.Name })
+            .ToList();
+        
+        filter.Shipments = shipments.ToList();
+        return View(filter);
     }
 
     [HttpGet]
@@ -68,8 +97,28 @@ public class ShipmentController : Controller
     {
         if (!ModelState.IsValid)
         {
-            return View(shipment);
+            var shipmentForm = new ShipmentFormViewModel { Shipment = shipment };
+
+            shipmentForm.Exporters = _dbContext.Exporters
+                .Select(e => new SelectListItem { Value = e.Id.ToString(), Text = e.Name })
+                .ToList();
+            shipmentForm.Receivers = _dbContext.Receivers
+                .Select(r => new SelectListItem { Value = r.Id.ToString(), Text = r.Name })
+                .ToList();
+            shipmentForm.ShippingCompanies = _dbContext.ShippingCompanies
+                .Select(sc => new SelectListItem { Value = sc.Id.ToString(), Text = sc.Name })
+                .ToList();
+            shipmentForm.Ports = _dbContext.Ports
+                .Select(p => new SelectListItem { Value = p.Id.ToString(), Text = p.PortCode })
+                .ToList();
+            shipmentForm.Warehouses = _dbContext.Warehouses
+                .Select(w => new SelectListItem { Value = w.Id.ToString(), Text = w.WarehouseCode })
+                .ToList();
+
+            return View(shipmentForm);
         }
+
+        shipment.DateCreated = DateTime.UtcNow;
         _dbContext.Add(shipment);
         await _dbContext.SaveChangesAsync();
         return RedirectToAction(nameof(Index));

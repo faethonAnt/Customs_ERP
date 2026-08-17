@@ -1,7 +1,20 @@
-@model List<CustomsERP.Core.Shipment>
+@model CustomsERP.Web.ViewModels.ShipmentFilterViewModel
 
 <h1>Shipments</h1>
+<form method="get">
+    <select asp-for="ExporterId" asp-items="Model.Exporters">
+        <option value="">All Exporters</option>
+    </select>
 
+    <select asp-for="ProductId" asp-items="Model.Products">
+        <option value="">All Products</option>
+    </select>
+
+    <input asp-for="DateFrom" type="date" />
+    <input asp-for="DateTo" type="date" />
+
+    <button type="submit">Filter</button>
+</form>
 <table class="table">
     <thead>
     <tr>
@@ -14,7 +27,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var shipment in Model)
+    @foreach (var shipment in Model.Shipments)
     {
         <tr>
             <td>@shipment.MRN</td>
