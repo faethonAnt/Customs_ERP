@@ -1,13 +1,15 @@
 @model List<CustomsERP.Core.Port>
 
-<h1>Ports</h1>
+<div class="page-header">
+    <h1>Ports</h1>
+    <a class="btn btn-primary" asp-controller="Port" asp-action="Create">+ New Port</a>
+</div>
 
-<table class="table">
+<table class="table table-striped table-hover align-middle">
     <thead>
     <tr>
         <th>Port Code</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th class="text-end">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -15,12 +17,11 @@
     {
         <tr>
             <td>@port.PortCode</td>
-            <td><a asp-controller="Port" asp-action="Update" asp-route-id="@port.Id">✎</a></td>
-            <td><a asp-controller="Port" asp-action="Delete" asp-route-id="@port.Id">❌</a></td>
-            
+            <td class="text-end table-actions">
+                <a class="btn-icon btn-icon-edit" asp-controller="Port" asp-action="Update" asp-route-id="@port.Id" title="Edit">✎</a>
+                <a class="btn-icon btn-icon-delete" asp-controller="Port" asp-action="Delete" asp-route-id="@port.Id" title="Delete">❌</a>
+            </td>
         </tr>
     }
     </tbody>
 </table>
-
-<a asp-controller="Port" asp-action="Create">Create New Port</a>

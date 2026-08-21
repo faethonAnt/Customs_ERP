@@ -146,12 +146,14 @@ public class ShipmentController : Controller
 	public IActionResult FullDetails(int id)
     {
         var shipment = _dbContext.Shipments
-            .Include(s => s.Id == id)
+            .Include(s => s.Exporter)
             .Include(s => s.Receiver)
             .Include(s => s.ShippingCompany)
             .Include(s => s.Port)
-            .Include(s => s.Warehouse);
-        return View(shipment);
+            .Include(s => s.Warehouse)
+            .Where(s => s.Id == id)
+            .ToList();
+        return View("FileView", shipment);
     }
 
 }	
