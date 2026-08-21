@@ -1,7 +1,13 @@
 @model CustomsERP.Core.Shipment
 
+<div class="page-header">
+    <h1>Delete Shipment</h1>
+</div>
 
-<h1>Are you sure you want to delete the Shipment</h1>
-<form method="post" asp-action="DeleteConfirmed" asp-route-id="@Model.Id">
-    <button type="submit">Yes</button>
-</form>
+<div class="form-card">
+    <p>Are you sure you want to delete shipment <strong>@Model.MRN</strong>?</p>
+    <form method="post" asp-action="DeleteConfirmed" asp-route-id="@Model.Id">
+        <button type="submit" class="btn btn-danger">Yes, delete</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+    </form>
+</div>

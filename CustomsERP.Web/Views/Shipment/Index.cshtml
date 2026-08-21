@@ -1,16 +1,17 @@
 @model List<CustomsERP.Core.Shipment>
 
-<h1>Shipments</h1>
+<div class="page-header">
+    <h1>Shipments</h1>
+    <a class="btn btn-primary" asp-controller="Shipment" asp-action="Create">+ New Shipment</a>
+</div>
 
-<table class="table">
+<table class="table table-striped table-hover align-middle">
     <thead>
     <tr>
         <th>MRN</th>
         <th>Exporter</th>
         <th>Date</th>
-		<th>Files</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th class="text-end">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -18,15 +19,15 @@
     {
         <tr>
             <td>@shipment.MRN</td>
-            <td>@shipment.Exporter.Name</td>
+            <td>@shipment.Exporter?.Name</td>
             <td>@shipment.DateCreated</td>
-														<!-- ShipmentId is used because the route is  -->
-			<td><a asp-controller="Document" asp-action="Index" asp-route-ShipmentId="@shipment.Id">📂</a></td>
-            <td><a asp-controller="Shipment" asp-action="Update" asp-route-id="@shipment.Id">✎</a></td>
-            <td><a asp-controller="Shipment" asp-action="Delete" asp-route-id="@shipment.Id">❌</a></td>
+            <!-- ShipmentId is used because the route is scoped to a specific shipment's documents -->
+            <td class="text-end table-actions">
+                <a class="btn-icon btn-icon-neutral" asp-controller="Document" asp-action="Index" asp-route-ShipmentId="@shipment.Id" title="Files">📂</a>
+                <a class="btn-icon btn-icon-edit" asp-controller="Shipment" asp-action="Update" asp-route-id="@shipment.Id" title="Edit">✎</a>
+                <a class="btn-icon btn-icon-delete" asp-controller="Shipment" asp-action="Delete" asp-route-id="@shipment.Id" title="Delete">❌</a>
+            </td>
         </tr>
     }
     </tbody>
 </table>
-
-<a asp-controller="Shipment" asp-action="Create">Create New Shipment</a>

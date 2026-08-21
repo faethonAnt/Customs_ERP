@@ -1,34 +1,49 @@
 @model List<CustomsERP.Core.Shipment>
 
-<h1>Shipment</h1>
+<div class="page-header">
+    <h1>Shipment Details</h1>
+</div>
 
-<table class="table">
+<table class="table table-striped table-hover align-middle">
     <thead>
     <tr>
         <th>MRN</th>
         <th>Exporter</th>
+        <th>Receiver</th>
+        <th>Shipping Company</th>
+        <th>Port</th>
+        <th>Warehouse</th>
+        <th>DV1</th>
         <th>Date</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th class="text-end">Actions</th>
     </tr>
     </thead>
     <tbody>
-   	@foreach(var shipment in Model)
-	{
+    @foreach (var shipment in Model)
+    {
         <tr>
             <td>@shipment.MRN</td>
-            <td>@shipment.Exporter.Name</td>
-            <td>@shipment.Receiver.Name</td>
-            <td>@shipment.ShippingCompany.Name</td>
-            <td>@shipment.Port.PortCode</td>
-            <td>@shipment.Warehouse.WarehouseCode</td>
-            <td>@(shipment.Dv1Exists ? "Yes" : "No")</td>
+            <td>@shipment.Exporter?.Name</td>
+            <td>@shipment.Receiver?.Name</td>
+            <td>@shipment.ShippingCompany?.Name</td>
+            <td>@shipment.Port?.PortCode</td>
+            <td>@shipment.Warehouse?.WarehouseCode</td>
+            <td>
+                @if (shipment.Dv1Exists)
+                {
+                    <span class="badge-soft badge-soft-green">Yes</span>
+                }
+                else
+                {
+                    <span class="badge-soft badge-soft-muted">No</span>
+                }
+            </td>
             <td>@shipment.DateCreated</td>
-            <td><a asp-controller="Shipment" asp-action="Update" asp-route-id="@shipment.Id">✎</a></td>
-            <td><a asp-controller="Shipment" asp-action="Delete" asp-route-id="@shipment.Id">❌</a></td>
+            <td class="text-end table-actions">
+                <a class="btn-icon btn-icon-edit" asp-controller="Shipment" asp-action="Update" asp-route-id="@shipment.Id" title="Edit">✎</a>
+                <a class="btn-icon btn-icon-delete" asp-controller="Shipment" asp-action="Delete" asp-route-id="@shipment.Id" title="Delete">❌</a>
+            </td>
         </tr>
     }
     </tbody>
 </table>
-
-<a asp-controller="Shipment" asp-action="Create">Create New Shipment</a>
