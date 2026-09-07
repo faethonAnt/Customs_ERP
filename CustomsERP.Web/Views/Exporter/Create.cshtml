@@ -1,35 +1,42 @@
 @model CustomsERP.Core.Exporter
 
-<h1>New Exporter</h1>
+<div class="page-header">
+    <h1>New Exporter</h1>
+</div>
 
-<form asp-action="Create" method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div>
-        <label>EORI</label>
-        <input asp-for="Eori"/>
-    </div>
-    <div>
-        <label>Name</label>
-        <input asp-for="Name"/>
-    </div>
-    <div>
-        <label>Address</label>
-        <input asp-for="Address"/>
-    </div>
-    <div>
-        <label>City</label>
-        <input asp-for="City"/>
-    </div>
-    <div>
-        <label>ZipCode</label>
-        <input asp-for="ZipCode"/>
-    </div>
-    <div>
-        <label>CountryCode</label>
-        <input asp-for="CountryCode"/>
-    </div>
-    <button type="submit">Save</button>
-</form>
+<div class="form-card">
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+        <div class="mb-3">
+            <label class="form-label">EORI</label>
+            <input asp-for="Eori" class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input asp-for="Name" class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Address</label>
+            <input asp-for="Address" class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">City</label>
+            <input asp-for="City" class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Zip Code</label>
+            <input asp-for="ZipCode" class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Country</label>
+            <input asp-for="CountryCode" class="form-control"/>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+    </form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

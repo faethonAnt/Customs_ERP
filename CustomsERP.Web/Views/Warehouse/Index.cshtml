@@ -1,13 +1,15 @@
 @model List<CustomsERP.Core.Warehouse>
 
-<h1>Warehouse</h1>
+<div class="page-header">
+    <h1>Warehouses</h1>
+    <a class="btn btn-primary" asp-controller="Warehouse" asp-action="Create">+ New Warehouse</a>
+</div>
 
-<table class="table">
+<table class="table table-striped table-hover align-middle">
     <thead>
     <tr>
         <th>Warehouse Code</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th class="text-end">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -15,12 +17,11 @@
     {
         <tr>
             <td>@warehouse.WarehouseCode</td>
-            <td><a asp-controller="Warehouse" asp-action="Update" asp-route-id="@warehouse.Id">✎</a></td>
-            <td><a asp-controller="Warehouse" asp-action="Delete" asp-route-id="@warehouse.Id">❌</a></td>
-            
+            <td class="text-end table-actions">
+                <a class="btn-icon btn-icon-edit" asp-controller="Warehouse" asp-action="Update" asp-route-id="@warehouse.Id" title="Edit">✎</a>
+                <a class="btn-icon btn-icon-delete" asp-controller="Warehouse" asp-action="Delete" asp-route-id="@warehouse.Id" title="Delete">❌</a>
+            </td>
         </tr>
     }
     </tbody>
 </table>
-
-<a asp-controller="Warehouse" asp-action="Create">Create New Warehouse</a>
